@@ -40,7 +40,6 @@ const Cart = ({ history }) => {
       {cartItems.length === 0 ? (
         <div className="emptyCart">
           <RemoveShoppingCartIcon />
-
           <Typography>No Product in Your Cart</Typography>
           <Link to="/products">View Products</Link>
         </div>
@@ -52,7 +51,6 @@ const Cart = ({ history }) => {
               <p>Quantity</p>
               <p>Subtotal</p>
             </div>
-
             {cartItems &&
               cartItems.map((item) => (
                 <div className="cartContainer" key={item.product}>
@@ -83,7 +81,6 @@ const Cart = ({ history }) => {
                   }`}</p>
                 </div>
               ))}
-
             <div className="cartGrossProfit">
               <div></div>
               <div className="cartGrossProfitBox">

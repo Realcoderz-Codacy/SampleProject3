@@ -22,17 +22,13 @@ const ProcessOrder = ({ history, match }) => {
 
   const updateOrderSubmitHandler = (e) => {
     e.preventDefault();
-
     const myForm = new FormData();
-
     myForm.set("status", status);
-
     dispatch(updateOrder(match.params.id, myForm));
   };
 
   const dispatch = useDispatch();
   const alert = useAlert();
-
   const [status, setStatus] = useState("");
 
   useEffect(() => {
@@ -48,7 +44,6 @@ const ProcessOrder = ({ history, match }) => {
       alert.success("Order Updated Successfully");
       dispatch({ type: UPDATE_ORDER_RESET });
     }
-
     dispatch(getOrderDetails(match.params.id));
   }, [dispatch, alert, error, match.params.id, isUpdated, updateError]);
 
@@ -89,7 +84,6 @@ const ProcessOrder = ({ history, match }) => {
                       </span>
                     </div>
                   </div>
-
                   <Typography>Payment</Typography>
                   <div className="orderDetailsContainerBox">
                     <div>
@@ -107,13 +101,11 @@ const ProcessOrder = ({ history, match }) => {
                           : "NOT PAID"}
                       </p>
                     </div>
-
                     <div>
                       <p>Amount:</p>
                       <span>{order.totalPrice && order.totalPrice}</span>
                     </div>
                   </div>
-
                   <Typography>Order Status</Typography>
                   <div className="orderDetailsContainerBox">
                     <div>
@@ -148,7 +140,6 @@ const ProcessOrder = ({ history, match }) => {
                   </div>
                 </div>
               </div>
-              {/*  */}
               <div
                 style={{
                   display: order.orderStatus === "Delivered" ? "none" : "block",
@@ -173,7 +164,6 @@ const ProcessOrder = ({ history, match }) => {
                       )}
                     </select>
                   </div>
-
                   <Button
                     id="createProductBtn"
                     type="submit"

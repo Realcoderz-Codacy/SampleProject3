@@ -15,14 +15,8 @@ import RateReviewIcon from "@material-ui/icons/RateReview";
 const Sidebar = () => {
   return (
     <div className="sidebar">
-      <Link to="/">
-        <img src={logo} alt="Ecommerce" />
-      </Link>
-      <Link to="/admin/dashboard">
-        <p>
-          <DashboardIcon /> Dashboard
-        </p>
-      </Link>
+      <Link to="/"><img src={logo} alt="Ecommerce" /></Link>
+      <Link to="/admin/dashboard"><p><DashboardIcon /> Dashboard</p></Link>
       <Link>
         <TreeView
           defaultCollapseIcon={<ExpandMoreIcon />}
@@ -39,23 +33,9 @@ const Sidebar = () => {
           </TreeItem>
         </TreeView>
       </Link>
-      <Link to="/admin/orders">
-        <p>
-          <ListAltIcon />
-          Orders
-        </p>
-      </Link>
-      <Link to="/admin/users">
-        <p>
-          <PeopleIcon /> Users
-        </p>
-      </Link>
-      <Link to="/admin/reviews">
-        <p>
-          <RateReviewIcon />
-          Reviews
-        </p>
-      </Link>
+      <Link to="/admin/orders"><p><ListAltIcon />Orders</p></Link>
+      <Link to="/admin/users"><p><PeopleIcon /> Users</p></Link>
+      <Link to="/admin/reviews"><p><RateReviewIcon />Reviews</p></Link>
     </div>
   );
 };

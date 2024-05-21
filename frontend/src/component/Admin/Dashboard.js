@@ -12,15 +12,10 @@ import MetaData from "../layout/MetaData";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
-
   const { products } = useSelector((state) => state.products);
-
   const { orders } = useSelector((state) => state.allOrders);
-
   const { users } = useSelector((state) => state.allUsers);
-
   let outOfStock = 0;
-
   products &&
     products.forEach((item) => {
       if (item.Stock === 0) {
@@ -67,10 +62,8 @@ const Dashboard = () => {
     <div className="dashboard">
       <MetaData title="Dashboard - Admin Panel" />
       <Sidebar />
-
       <div className="dashboardContainer">
         <Typography component="h1">Dashboard</Typography>
-
         <div className="dashboardSummary">
           <div>
             <p>
@@ -92,11 +85,9 @@ const Dashboard = () => {
             </Link>
           </div>
         </div>
-
         <div className="lineChart">
           <Line data={lineState} />
         </div>
-
         <div className="doughnutChart">
           <Doughnut data={doughnutState} />
         </div>

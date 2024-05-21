@@ -12,23 +12,14 @@ import { Button } from "@material-ui/core";
 import MetaData from "../layout/MetaData";
 import DeleteIcon from "@material-ui/icons/Delete";
 import Star from "@material-ui/icons/Star";
-
 import SideBar from "./Sidebar";
 import { DELETE_REVIEW_RESET } from "../../constants/productConstants";
 
 const ProductReviews = ({ history }) => {
   const dispatch = useDispatch();
-
   const alert = useAlert();
-
-  const { error: deleteError, isDeleted } = useSelector(
-    (state) => state.review
-  );
-
-  const { error, reviews, loading } = useSelector(
-    (state) => state.productReviews
-  );
-
+  const { error: deleteError, isDeleted } = useSelector(state => state.review);
+  const { error, reviews, loading } = useSelector(state => state.productReviews);
   const [productId, setProductId] = useState("");
 
   const deleteReviewHandler = (reviewId) => {
@@ -48,12 +39,10 @@ const ProductReviews = ({ history }) => {
       alert.error(error);
       dispatch(clearErrors());
     }
-
     if (deleteError) {
       alert.error(deleteError);
       dispatch(clearErrors());
     }
-
     if (isDeleted) {
       alert.success("Review Deleted Successfully");
       history.push("/admin/reviews");
@@ -63,21 +52,18 @@ const ProductReviews = ({ history }) => {
 
   const columns = [
     { field: "id", headerName: "Review ID", minWidth: 200, flex: 0.5 },
-
     {
       field: "user",
       headerName: "User",
       minWidth: 200,
       flex: 0.6,
     },
-
     {
       field: "comment",
       headerName: "Comment",
       minWidth: 350,
       flex: 1,
     },
-
     {
       field: "rating",
       headerName: "Rating",
@@ -91,7 +77,6 @@ const ProductReviews = ({ history }) => {
           : "redColor";
       },
     },
-
     {
       field: "actions",
       flex: 0.3,
@@ -116,7 +101,6 @@ const ProductReviews = ({ history }) => {
   ];
 
   const rows = [];
-
   reviews &&
     reviews.forEach((item) => {
       rows.push({
@@ -130,7 +114,6 @@ const ProductReviews = ({ history }) => {
   return (
     <Fragment>
       <MetaData title={`ALL REVIEWS - Admin`} />
-
       <div className="dashboard">
         <SideBar />
         <div className="productReviewsContainer">
@@ -139,7 +122,6 @@ const ProductReviews = ({ history }) => {
             onSubmit={productReviewsSubmitHandler}
           >
             <h1 className="productReviewsFormHeading">ALL REVIEWS</h1>
-
             <div>
               <Star />
               <input
@@ -150,7 +132,6 @@ const ProductReviews = ({ history }) => {
                 onChange={(e) => setProductId(e.target.value)}
               />
             </div>
-
             <Button
               id="createProductBtn"
               type="submit"
@@ -161,7 +142,6 @@ const ProductReviews = ({ history }) => {
               Search
             </Button>
           </form>
-
           {reviews && reviews.length > 0 ? (
             <DataGrid
               rows={rows}

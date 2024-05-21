@@ -18,14 +18,9 @@ import { DELETE_PRODUCT_RESET } from "../../constants/productConstants";
 
 const ProductList = ({ history }) => {
   const dispatch = useDispatch();
-
   const alert = useAlert();
-
   const { error, products } = useSelector((state) => state.products);
-
-  const { error: deleteError, isDeleted } = useSelector(
-    (state) => state.product
-  );
+  const { error: deleteError, isDeleted } = useSelector(state => state.product);
 
   const deleteProductHandler = (id) => {
     dispatch(deleteProduct(id));
@@ -36,24 +31,20 @@ const ProductList = ({ history }) => {
       alert.error(error);
       dispatch(clearErrors());
     }
-
     if (deleteError) {
       alert.error(deleteError);
       dispatch(clearErrors());
     }
-
     if (isDeleted) {
       alert.success("Product Deleted Successfully");
       history.push("/admin/dashboard");
       dispatch({ type: DELETE_PRODUCT_RESET });
     }
-
     dispatch(getAdminProduct());
   }, [dispatch, alert, error, deleteError, history, isDeleted]);
 
   const columns = [
     { field: "id", headerName: "Product ID", minWidth: 200, flex: 0.5 },
-
     {
       field: "name",
       headerName: "Name",
@@ -67,7 +58,6 @@ const ProductList = ({ history }) => {
       minWidth: 150,
       flex: 0.3,
     },
-
     {
       field: "price",
       headerName: "Price",
@@ -75,7 +65,6 @@ const ProductList = ({ history }) => {
       minWidth: 270,
       flex: 0.5,
     },
-
     {
       field: "actions",
       flex: 0.3,
@@ -104,7 +93,6 @@ const ProductList = ({ history }) => {
   ];
 
   const rows = [];
-
   products &&
     products.forEach((item) => {
       rows.push({
@@ -118,12 +106,10 @@ const ProductList = ({ history }) => {
   return (
     <Fragment>
       <MetaData title={`ALL PRODUCTS - Admin`} />
-
       <div className="dashboard">
         <SideBar />
         <div className="productListContainer">
           <h1 id="productListHeading">ALL PRODUCTS</h1>
-
           <DataGrid
             rows={rows}
             columns={columns}
