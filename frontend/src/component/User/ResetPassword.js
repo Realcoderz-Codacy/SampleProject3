@@ -11,22 +11,15 @@ import LockIcon from "@material-ui/icons/Lock";
 const ResetPassword = ({ history, match }) => {
   const dispatch = useDispatch();
   const alert = useAlert();
-
-  const { error, success, loading } = useSelector(
-    (state) => state.forgotPassword
-  );
-
+  const { error, success, loading } = useSelector( state => state.forgotPassword );
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const resetPasswordSubmit = (e) => {
     e.preventDefault();
-
     const myForm = new FormData();
-
     myForm.set("password", password);
     myForm.set("confirmPassword", confirmPassword);
-
     dispatch(resetPassword(match.params.token, myForm));
   };
 
@@ -35,10 +28,8 @@ const ResetPassword = ({ history, match }) => {
       alert.error(error);
       dispatch(clearErrors());
     }
-
     if (success) {
       alert.success("Password Updated Successfully");
-
       history.push("/login");
     }
   }, [dispatch, error, alert, history, success]);
@@ -53,7 +44,6 @@ const ResetPassword = ({ history, match }) => {
           <div className="resetPasswordContainer">
             <div className="resetPasswordBox">
               <h2 className="resetPasswordHeading">Update Profile</h2>
-
               <form
                 className="resetPasswordForm"
                 onSubmit={resetPasswordSubmit}

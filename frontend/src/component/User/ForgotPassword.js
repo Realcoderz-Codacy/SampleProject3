@@ -10,18 +10,12 @@ import MetaData from "../layout/MetaData";
 const ForgotPassword = () => {
   const dispatch = useDispatch();
   const alert = useAlert();
-
-  const { error, message, loading } = useSelector(
-    (state) => state.forgotPassword
-  );
-
+  const { error, message, loading } = useSelector( state => state.forgotPassword );
   const [email, setEmail] = useState("");
 
   const forgotPasswordSubmit = (e) => {
     e.preventDefault();
-
     const myForm = new FormData();
-
     myForm.set("email", email);
     dispatch(forgotPassword(myForm));
   };
@@ -31,7 +25,6 @@ const ForgotPassword = () => {
       alert.error(error);
       dispatch(clearErrors());
     }
-
     if (message) {
       alert.success(message);
     }
@@ -47,7 +40,6 @@ const ForgotPassword = () => {
           <div className="forgotPasswordContainer">
             <div className="forgotPasswordBox">
               <h2 className="forgotPasswordHeading">Forgot Password</h2>
-
               <form
                 className="forgotPasswordForm"
                 onSubmit={forgotPasswordSubmit}
@@ -63,7 +55,6 @@ const ForgotPassword = () => {
                     onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
-
                 <input
                   type="submit"
                   value="Send"
